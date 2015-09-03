@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Dados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Word1</th>
+      <th>Word2</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dados.each do |dado| %>
+      <tr>
+        <td><%= dado.word1 %></td>
+        <td><%= dado.word2 %></td>
+        <td><%= link_to 'Show', dado %></td>
+        <td><%= link_to 'Destroy', dado, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dado', new_dado_path %>

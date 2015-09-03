@@ -1,0 +1,25 @@
+<%= form_for(@dado) do |f| %>
+  <% if @dado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dado.errors.count, "error") %> prohibited this dado from being saved:</h2>
+
+      <ul>
+      <% @dado.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :word1 %><br>
+    <%= f.text_field :word1 %>
+  </div>
+  <div class="field">
+    <%= f.label :word2 %><br>
+    <%= f.text_field :word2 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

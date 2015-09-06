@@ -1,16 +1,22 @@
+<div class="block">
+
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Word1:</strong>
+  <strong>First Word:</strong>
   <%= @dado.word1 %>
 </p>
 
 <p>
-  <strong>Word2:</strong>
+  <strong>Second Word:</strong>
   <%= @dado.word2 %>
 </p>
 
-<br />
-
+<p>
+  <strong>Result:</strong>
+  <%= @dado.result %>
+</p>
 
 <%= link_to 'Back', dados_path %>
+
+</div>

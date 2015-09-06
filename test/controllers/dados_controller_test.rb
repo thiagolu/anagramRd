@@ -18,7 +18,7 @@ class DadosControllerTest < ActionController::TestCase
 
   test "should create dado" do
     assert_difference('Dado.count') do
-      post :create, dado: { word1: @dado.word1, word2: @dado.word2 }
+      post :create, dado: { result: @dado.result, word1: @dado.word1, word2: @dado.word2 }
     end
 
     assert_redirected_to dado_path(assigns(:dado))
@@ -35,7 +35,7 @@ class DadosControllerTest < ActionController::TestCase
   end
 
   test "should update dado" do
-    patch :update, id: @dado, dado: { word1: @dado.word1, word2: @dado.word2 }
+    patch :update, id: @dado, dado: { result: @dado.result, word1: @dado.word1, word2: @dado.word2 }
     assert_redirected_to dado_path(assigns(:dado))
   end
 

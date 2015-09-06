@@ -1,4 +1,6 @@
 class Dado < ActiveRecord::Base
-  validates :word1, presence: true
-  validates :word2, presence: true
+  attr_accessor :result
+      def anag
+      @dado.result = true
+    end
 end

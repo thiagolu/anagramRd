@@ -10,13 +10,20 @@ class DadosController < ApplicationController
   # GET /dados/1
   # GET /dados/1.json
   def show
+    
+         if @dado.word1.gsub(/\s+/,'').downcase.chars.sort == @dado.word2.gsub(/\s+/,'').downcase.chars.sort
+          @dado.result = true
+          else
+            @dado.result = false
+          end
+    
   end
 
   # GET /dados/new
   def new
     @dado = Dado.new
     
-    
+            
   end
 
   # GET /dados/1/edit
@@ -27,23 +34,22 @@ class DadosController < ApplicationController
   # POST /dados.json
   def create
     @dado = Dado.new(dado_params)
-    verify = "errado"
 
     respond_to do |format|
       if @dado.save
+
         
-        if @dado.word1.gsub(/\s+/,'').downcase.chars.sort == @dado.word2.gsub(/\s+/,'').downcase.chars.sort
-
-
-        format.html { redirect_to @dado, notice: 'Dado was successfully created. And it is an anagram' }
-        format.json { render :show, status: :created, location: @dado }          
+         if @dado.word1.gsub(/\s+/,'').downcase.chars.sort == @dado.word2.gsub(/\s+/,'').downcase.chars.sort
+   
+          format.html { redirect_to @dado, notice: 'Dado was successfully created. And it is an anagram' }
+          format.json { render :show, status: :created, location: @dado }          
           else
-
-        format.html { redirect_to @dado, notice: 'Dado was successfully created. And it is not an anagram' }
-        format.json { render :show, status: :created, location: @dado }                 
+            
+          format.html { redirect_to @dado, notice: 'Dado was successfully created. And it is not an anagram' }
+          format.json { render :show, status: :created, location: @dado }                 
             end
-        
-      else
+         
+            else
         format.html { render :new }
         format.json { render json: @dado.errors, status: :unprocessable_entity }
       end
@@ -55,6 +61,7 @@ class DadosController < ApplicationController
   def update
     respond_to do |format|
       if @dado.update(dado_params)
+
         format.html { redirect_to @dado, notice: 'Dado was successfully updated.' }
         format.json { render :show, status: :ok, location: @dado }
       else
@@ -82,6 +89,9 @@ class DadosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dado_params
-      params.require(:dado).permit(:word1, :word2,:anag)
+      params.require(:dado).permit(:word1, :word2, :result)
+      
     end
+    
+
 end
